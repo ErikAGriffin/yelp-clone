@@ -1,10 +1,16 @@
-<% if @restaurants.any? %>
-  <% @restaurants.each do |restaurant| %>
-    <%= link_to restaurant.name, restaurant_path(restaurant) %>
-    <%= link_to "Edit #{restaurant.name}", edit_restaurant_path(restaurant) %>
-    <%= link_to "Delete #{restaurant.name}", restaurant_path(restaurant), method: :delete %>
+<ul>
+  <% if @restaurants.any? %>
+    <% @restaurants.each do |restaurant| %>
+      <li>
+      <%= link_to restaurant.name, restaurant_path(restaurant) %>
+      <%= link_to "Review #{restaurant.name}", new_restaurant_review_path(restaurant) %>
+      <%= link_to "Edit #{restaurant.name}", edit_restaurant_path(restaurant) %>
+      <%= link_to "Delete #{restaurant.name}", restaurant_path(restaurant), method: :delete %>
+        </li>
+    <% end %>
+  <% else %>
+    No restaurants yet.
+
   <% end %>
-<% else %>
-  No restaurants yet.
-<% end %>
+</ul>
 <a href="/restaurants/new">Add one!</a>
