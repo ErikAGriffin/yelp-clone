@@ -15,10 +15,10 @@ feature 'restaurants' do
   context 'Creating a restaurant' do
 
     scenario 'A user clicks the Add Restaurant button' do
-      vist '/restaurants'
-      click_link 'Add a restaurant'
+      visit '/restaurants'
+      click_link 'Add one!'
       fill_in 'Name', with: 'Spankys'
-      click_button 'Add Restaurant'
+      click_button 'Create Restaurant'
       expect(current_path).to eq '/restaurants'
       expect(page).to have_content 'Spankys'
     end
