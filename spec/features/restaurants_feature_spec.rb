@@ -12,8 +12,20 @@ feature 'restaurants' do
 
   end
 
-  context 'There are restaurants' do
+  context 'Creating a restaurant' do
 
+    scenario 'A user clicks the Add Restaurant button' do
+      vist '/restaurants'
+      click_link 'Add a restaurant'
+      fill_in 'Name', with: 'Spankys'
+      click_button 'Add Restaurant'
+      expect(current_path).to eq '/restaurants'
+      expect(page).to have_content 'Spankys'
+    end
+
+  end
+
+  context 'There are restaurants' do
     before do
       Restaurant.create(name: 'Meedos')
     end
